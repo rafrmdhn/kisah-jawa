@@ -12,7 +12,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ketegori</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="#" class="dropdown-item">Urban Legend</a>
+                        <a href="/category" class="dropdown-item">Urban Legend</a>
                         <a href="#" class="dropdown-item">True Crime</a>
                         <a href="#" class="dropdown-item">Misteri</a>
                         <a href="#" class="dropdown-item">Paranormal</a>
@@ -22,7 +22,7 @@
                 </div>
                 <a href="category.html" class="nav-item nav-link">Video</a>
                 <a href="single.html" class="nav-item nav-link">Trending</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
             <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
                 <input type="text" class="form-control" placeholder="Keyword">
