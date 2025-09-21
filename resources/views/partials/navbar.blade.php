@@ -12,12 +12,9 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ketegori</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="/category" class="dropdown-item">Urban Legend</a>
-                        <a href="#" class="dropdown-item">True Crime</a>
-                        <a href="#" class="dropdown-item">Misteri</a>
-                        <a href="#" class="dropdown-item">Paranormal</a>
-                        <a href="#" class="dropdown-item">Film & Review</a>
-                        <a href="#" class="dropdown-item">Internasional</a>
+                        @foreach($categories as $category)
+                            <a href="" class="dropdown-item">{{ $category->name }}</a>
+                        @endforeach
                     </div>
                 </div>
                 <a href="category.html" class="nav-item nav-link">Video</a>

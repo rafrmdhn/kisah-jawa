@@ -45,14 +45,30 @@
                         <h3 class="m-0">Categories</h3>
                         <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
                     </div>
-                    @foreach($categories as $category)
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-1.jpg" style="object-fit: cover;">
+                        <img class="img-fluid w-100 h-100" src="https://images.hukumonline.com/frontend/lt649d88d229c26/lt649d896cc6261.jpg" style="object-fit: cover;">
                         <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            {{ $category->name }}
+                            Kriminal
                         </a>
                     </div>
-                    @endforeach
+                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                        <img class="img-fluid w-100 h-100" src="https://cdnpro.eraspace.com/media/mageplaza/blog/post/1/9/1931222270_1.jpg" style="object-fit: cover;">
+                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                            Misteri
+                        </a>
+                    </div>
+                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                        <img class="img-fluid w-100 h-100" src="https://www.nyfa.edu/wp-content/uploads/2017/06/howtowriteafilmreview.png" style="object-fit: cover;">
+                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                            Film & Review
+                        </a>
+                    </div>
+                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                        <img class="img-fluid w-100 h-100" src="https://asani.co.id/wp-content/uploads/2024/02/jenis-opini-audit.webp" style="object-fit: cover;">
+                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                            Opini
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,7 +93,7 @@
                             <span class="px-1 text-white">/</span>
                             <a class="text-white" href="">{{ $news->tanggal_posting }}</a>
                         </div>
-                        <a class="h4 m-0 text-white" href="">{{ $news->judul }}</a>
+                        <a class="h4 m-0 text-white" href="">{{ ($news->judul) }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -92,7 +108,7 @@
     <div class="container-fluid">
         <div class="container">
             <div class="row">
-                @foreach($categories as $category)
+                @foreach($categories->take(4) as $category)
                     <div class="col-lg-6 py-3">
                         <div class="bg-light py-2 px-4 mb-3">
                             <h3 class="m-0">{{ $category->name }}</h3>
@@ -107,7 +123,7 @@
                                             <span class="px-1">/</span>
                                             <span>{{ $artikel->tanggal_posting }}</span>
                                         </div>
-                                        <a class="h4 m-0" href="">{{ $artikel->judul }}</a>
+                                        <a class="h4 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -127,7 +143,7 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                                <h3 class="m-0">Popular</h3>
+                                <h3 class="m-0">Populer</h3>
                                 <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
                             </div>
                         </div>
@@ -145,8 +161,8 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ $artikel->judul }}</a>
-                                            <p class="m-0">{{ Str::limit($artikel->deskripsi, 120) }}</p>
+                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
                                 @else
@@ -159,7 +175,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ $artikel->judul }}</a>
+                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif
@@ -179,8 +195,8 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ $artikel->judul }}</a>
-                                            <p class="m-0">{{ Str::limit($artikel->deskripsi, 120) }}</p>
+                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
                                 @else
@@ -193,7 +209,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ $artikel->judul }}</a>
+                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif
@@ -208,7 +224,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                                <h3 class="m-0">Latest</h3>
+                                <h3 class="m-0">Terbaru</h3>
                                 <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
                             </div>
                         </div>
@@ -226,8 +242,8 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ $artikel->judul }}</a>
-                                            <p class="m-0">{{ Str::limit($artikel->deskripsi, 120) }}</p>
+                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
                                 @else
@@ -240,7 +256,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ $artikel->judul }}</a>
+                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif
@@ -260,8 +276,8 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ $artikel->judul }}</a>
-                                            <p class="m-0">{{ Str::limit($artikel->deskripsi, 120) }}</p>
+                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
                                 @else
@@ -274,7 +290,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ $artikel->judul }}</a>
+                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif
