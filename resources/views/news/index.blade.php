@@ -7,9 +7,9 @@
             <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative">
                 @foreach($topNews as $news)
                 <div class="d-flex">
-                    <img src="{{ asset('storage/' . $news->sumber_gambar) }}" style="width: 80px; height: 80px; object-fit: cover;">
+                    <img src="{{ $news->sumber_gambar }}" style="width: 80px; height: 80px; object-fit: cover;">
                     <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
-                        <a class="text-secondary font-weight-semi-bold" href="">{{ $news->judul }}</a>
+                        <a class="text-secondary font-weight-semi-bold" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -32,9 +32,9 @@
                                 <div class="mb-1">
                                     <a class="text-white" href="">{{ $news->category->name }}</a>
                                     <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('d F Y') }}</a>
+                                    <span class="text-white">{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
                                 </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">{{ $news->judul }}</a>
+                                <a class="h2 m-0 text-white font-weight-bold" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a>
                             </div>
                         </div>
                         @endforeach
@@ -91,9 +91,9 @@
                         <div class="mb-1" style="font-size: 13px;">
                             <a class="text-white" href="">{{ $news->category->name }}</a>
                             <span class="px-1 text-white">/</span>
-                            <a class="text-white" href="">{{ $news->tanggal_posting }}</a>
+                            <span class="text-white">{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
                         </div>
-                        <a class="h4 m-0 text-white" href="">{{ ($news->judul) }}</a>
+                        <a class="h4 m-0 text-white" href="{{ route('articles.show', $news->slug) }}">{{ ($news->judul) }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -121,9 +121,9 @@
                                         <div class="mb-2" style="font-size: 13px;">
                                             <a href="">{{ $artikel->category->name }}</a>
                                             <span class="px-1">/</span>
-                                            <span>{{ $artikel->tanggal_posting }}</span>
+                                            <span>{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
                                         </div>
-                                        <a class="h4 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                        <a class="h4 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -157,11 +157,11 @@
                                         <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
@@ -175,7 +175,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif
@@ -195,7 +195,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
@@ -209,7 +209,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif
@@ -242,7 +242,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
@@ -256,7 +256,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif
@@ -276,7 +276,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h4" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
                                         </div>
                                     </div>
@@ -290,7 +290,7 @@
                                                 <span class="px-1">/</span>
                                                 <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
                                             </div>
-                                            <a class="h6 m-0" href="">{{ Str::limit($artikel->judul, 50) }}</a>
+                                            <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
                                     </div>
                                 @endif

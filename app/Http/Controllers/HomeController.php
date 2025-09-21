@@ -13,15 +13,42 @@ class HomeController extends Controller
     {
         $tags = Tag::all();
         $topNews = Article::with('category')
+            ->whereHas('category', function ($query) {
+                $query->whereIn('name', [
+                    'Kriminal',
+                    'Misteri',
+                    'Film & Review',
+                    'Opini',
+                    'Sejarah',
+                ]);
+            })
             ->latest()
             ->take(5)
             ->get();
         $mainNews = Article::with('category')
+            ->whereHas('category', function ($query) {
+                $query->whereIn('name', [
+                    'Kriminal',
+                    'Misteri',
+                    'Film & Review',
+                    'Opini',
+                    'Sejarah',
+                ]);
+            })
             ->latest()
             ->take(2)
             ->get();
         $featuredNews = Article::with('category')
             ->where('is_featured', true)
+            ->whereHas('category', function ($query) {
+                $query->whereIn('name', [
+                    'Kriminal',
+                    'Misteri',
+                    'Film & Review',
+                    'Opini',
+                    'Sejarah',
+                ]);
+            })
             ->latest()
             ->take(5)
             ->get();
@@ -29,21 +56,73 @@ class HomeController extends Controller
             ->whereIn('name', ['Kriminal', 'Misteri', 'Opini', 'Film & Review', 'Sejarah'])
             ->take(5)
             ->get();
-        $popularLeft = Article::orderBy('views', 'desc')
+        $popularLeft = Article::with('category')
+                            ->whereHas('category', function ($query) {
+                                $query->whereIn('name', [
+                                    'Kriminal',
+                                    'Misteri',
+                                    'Film & Review',
+                                    'Opini',
+                                    'Sejarah',
+                                ]);
+                            })
+                            ->orderBy('views', 'desc')
                             ->take(3)
                             ->get();
-        $popularRight = Article::orderBy('views', 'desc')
+        $popularRight = Article::with('category')
+                            ->whereHas('category', function ($query) {
+                                $query->whereIn('name', [
+                                    'Kriminal',
+                                    'Misteri',
+                                    'Film & Review',
+                                    'Opini',
+                                    'Sejarah',
+                                ]);
+                            })
+                            ->orderBy('views', 'desc')
                             ->skip(3)
                             ->take(3)
                             ->get();
         $latestLeft = Article::with('category')
+            ->whereHas('category', function ($query) {
+                $query->whereIn('name', [
+                    'Kriminal',
+                    'Misteri',
+                    'Film & Review',
+                    'Opini',
+                    'Sejarah',
+                ]);
+            })
             ->orderBy('tanggal_posting', 'desc')
             ->take(3)
             ->get();
         $latestRight = Article::with('category')
+            ->whereHas('category', function ($query) {
+                $query->whereIn('name', [
+                    'Kriminal',
+                    'Misteri',
+                    'Film & Review',
+                    'Opini',
+                    'Sejarah',
+                ]);
+            })
             ->orderBy('tanggal_posting', 'desc')
             ->skip(3)
             ->take(3)
+            ->get();
+        $trendingNews = Article::with('category')
+            ->whereHas('category', function ($query) {
+                $query->whereIn('name', [
+                    'Kriminal',
+                    'Misteri',
+                    'Film & Review',
+                    'Opini',
+                    'Sejarah',
+                ]);
+            })
+            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
+            ->orderBy('views', 'desc')
+            ->take(5)
             ->get();
         return view('news.index', compact(
             'topNews',
@@ -54,7 +133,8 @@ class HomeController extends Controller
             'popularRight',
             'latestLeft',
             'latestRight',
-            'tags'
+            'tags',
+            'trendingNews'
         ));
     }
 }
