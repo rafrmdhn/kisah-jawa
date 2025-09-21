@@ -11,3 +11,4 @@ Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articles.show');
+Route::post('/comments/store', [ArticleController::class, 'comment'])->name('comments.store');

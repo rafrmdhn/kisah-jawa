@@ -50,5 +50,11 @@ class DatabaseSeeder extends Seeder
         foreach ($tags as $tag) {
             Tag::create($tag);
         }
+
+        // $this->call([
+        //     ArtikelSeeder::class,
+        // ]);
+
+        $this->call(ArtikelTagSeeder::class);
     }
 }
