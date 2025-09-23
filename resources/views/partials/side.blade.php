@@ -65,11 +65,11 @@
                 <img src="{{ $news->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
-                        <a href="">{{ $news->category->name }}</a>
+                        <a href="{{ route('category.show', $news->category->slug) }}">{{ $news->category->name }}</a>
                         <span class="px-1">/</span>
                         <span>{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
                     </div>
-                    <a class="h6 m-0" href="">{{ $news->judul }}</a>
+                    <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a>
                 </div>
             </div>
         @endforeach

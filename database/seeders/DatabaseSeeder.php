@@ -47,14 +47,14 @@ class DatabaseSeeder extends Seeder
         //     Category::create($category);
         // }
 
-        foreach ($tags as $tag) {
-            Tag::create($tag);
-        }
+        // foreach ($tags as $tag) {
+        //     Tag::create($tag);
+        // }
 
         // $this->call([
         //     ArtikelSeeder::class,
         // ]);
 
-        $this->call(ArtikelTagSeeder::class);
+        // $this->call(ArtikelTagSeeder::class);
     }
 }
