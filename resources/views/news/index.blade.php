@@ -47,25 +47,25 @@
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://images.hukumonline.com/frontend/lt649d88d229c26/lt649d896cc6261.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                        <a href="/category/kriminal" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
                             Kriminal
                         </a>
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://cdnpro.eraspace.com/media/mageplaza/blog/post/1/9/1931222270_1.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                        <a href="/category/misteri" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
                             Misteri
                         </a>
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://www.nyfa.edu/wp-content/uploads/2017/06/howtowriteafilmreview.png" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                        <a href="/category/film-review" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
                             Film & Review
                         </a>
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://asani.co.id/wp-content/uploads/2024/02/jenis-opini-audit.webp" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                        <a href="/category/opini" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
                             Opini
                         </a>
                     </div>

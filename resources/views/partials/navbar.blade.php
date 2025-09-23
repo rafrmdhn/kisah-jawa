@@ -13,7 +13,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ketegori</a>
                     <div class="dropdown-menu rounded-0 m-0">
                         @foreach($categories as $category)
-                            <a href="" class="dropdown-item">{{ $category->name }}</a>
+                            <a href="{{ route('category.show', $category->slug) }}" class="dropdown-item">{{ $category->name }}</a>
                         @endforeach
                     </div>
                 </div>
