@@ -9,15 +9,10 @@
         <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
                 <a href="/" class="nav-item nav-link">Beranda</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ketegori</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        @foreach($categories as $category)
-                            <a href="{{ route('category.show', $category->slug) }}" class="dropdown-item">{{ $category->name }}</a>
-                        @endforeach
-                    </div>
-                </div>
-                <a href="category.html" class="nav-item nav-link">Video</a>
+                @foreach($categories as $category)
+                    <a href="{{ route('category.show', $category->slug) }}" class="nav-item nav-link">{{ $category->name }}</a>
+                @endforeach
+                {{-- <a href="category.html" class="nav-item nav-link">Video</a> --}}
                 <a href="single.html" class="nav-item nav-link">Trending</a>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
