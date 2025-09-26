@@ -8,13 +8,13 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-                <a href="/" class="nav-item nav-link">Beranda</a>
+                <a href="{{ url('/') }}" class="nav-item nav-link">Beranda</a>
                 @foreach($categories as $category)
                     <a href="{{ route('category.show', $category->slug) }}" class="nav-item nav-link">{{ $category->name }}</a>
                 @endforeach
                 {{-- <a href="category.html" class="nav-item nav-link">Video</a> --}}
-                <a href="single.html" class="nav-item nav-link">Trending</a>
-                <a href="/contact" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('trending.index') }}" class="nav-item nav-link">Trending</a>
+                <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
             </div>
             <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
                 <input type="text" class="form-control" placeholder="Keyword">
