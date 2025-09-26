@@ -42,14 +42,6 @@
                 <div class="col-lg-8">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                         <h3 class="m-0">Trending</h3>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="range">
-                            <a class="btn btn-outline-secondary {{ $range==1?'active':'' }}"
-                               href="{{ route('trending.index', ['range'=>1]) }}">24 Jam</a>
-                            <a class="btn btn-outline-secondary {{ $range==7?'active':'' }}"
-                               href="{{ route('trending.index', ['range'=>7]) }}">7 Hari</a>
-                            <a class="btn btn-outline-secondary {{ $range==30?'active':'' }}"
-                               href="{{ route('trending.index', ['range'=>30]) }}">30 Hari</a>
-                        </div>
                     </div>
 
                     <div class="row row-cols-1 g-4">

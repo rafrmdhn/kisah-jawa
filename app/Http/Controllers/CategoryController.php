@@ -24,7 +24,7 @@ class CategoryController extends Controller
                     'Sejarah',
                 ]);
             })
-            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
+            ->whereDate('tanggal_posting', '>=', now()->subDays(30))
             ->orderBy('views', 'desc')
             ->take(5)
             ->get();
@@ -53,7 +53,7 @@ class CategoryController extends Controller
                     'Sejarah',
                 ]);
             })
-            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
+            ->whereDate('tanggal_posting', '>=', now()->subDays(30))
             ->orderBy('views', 'desc')
             ->take(5)
             ->get();
