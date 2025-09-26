@@ -20,4 +20,10 @@ class Article extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    public function scopeTrending($query, int $days = 7)
+    {
+        return $query->whereDate('tanggal_posting', '>=', now()->subDays($days))
+                        ->orderBy('views', 'desc');
+    }
 }
