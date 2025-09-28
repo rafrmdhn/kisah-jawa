@@ -9,64 +9,52 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::whereIn('slug', ['kriminal', 'misteri', 'film-review', 'opini', 'sejarah'])
-            ->withCount('articles')
-            ->get();
+        $activeSlug = $request->query('cat');
+        $categories = Category::whereIn('name', [
+            'Kriminal',
+            'Misteri',
+            'Film & Review',
+            'Opini',
+            'Sejarah'
+        ])
+        ->take(5)
+        ->get();
+
+        $query = Article::with('category')->latest();
+
+        $activeCategory = null;
+        if ($activeSlug) {
+            $activeCategory = Category::where('slug', $activeSlug)->firstOrFail();
+            $query->where('category_id', $activeCategory->id);
+        }
+
+        $articles = $query->paginate(10)->appends(['cat' => $activeSlug]);
+
+        $allowedNames = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
+
         $trendingNews = Article::with('category')
-            ->whereHas('category', function ($query) {
-                $query->whereIn('name', [
-                    'Kriminal',
-                    'Misteri',
-                    'Film & Review',
-                    'Opini',
-                    'Sejarah',
-                ]);
-            })
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedNames))
             ->whereDate('tanggal_posting', '>=', now()->subDays(30))
             ->orderBy('views', 'desc')
             ->take(5)
             ->get();
+
+        $sidebarCategories = Category::withCount('articles')
+            ->whereIn('name', $allowedNames)
+            ->take(5)
+            ->get();
+
         $tags = Tag::all();
+
         return view('categories.index', compact(
             'categories',
-            'trendingNews',
-            'tags'
-        ));
-    }
-
-    public function show($slug)
-    {
-        $category = Category::where('slug', $slug)->firstOrFail();
-        $articles = Article::with('category')
-            ->where('category_id', $category->id)
-            ->latest()
-            ->paginate(10);
-        $trendingNews = Article::with('category')
-            ->whereHas('category', function ($query) {
-                $query->whereIn('name', [
-                    'Kriminal',
-                    'Misteri',
-                    'Film & Review',
-                    'Opini',
-                    'Sejarah',
-                ]);
-            })
-            ->whereDate('tanggal_posting', '>=', now()->subDays(30))
-            ->orderBy('views', 'desc')
-            ->take(5)
-            ->get();
-        $categories = Category::withCount('articles')
-            ->whereIn('name', ['Kriminal', 'Misteri', 'Opini', 'Film & Review', 'Sejarah'])
-            ->take(5)
-            ->get();
-        $tags = Tag::all();
-        return view('categories.show', compact(
-            'category',
+            'activeCategory',
+            'activeSlug',
             'articles',
             'trendingNews',
-            'categories',
+            'sidebarCategories',
             'tags'
         ));
     }

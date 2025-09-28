@@ -5,27 +5,19 @@
             <h3 class="m-0">Follow Us</h3>
         </div>
         <div class="d-flex mb-3">
-            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #39569E;">
-                <small class="fab fa-facebook-f mr-2"></small><small>12,345 Fans</small>
+            <a href="linkedin.com/company/fypgroup/" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #0185AE;">
+                <small class="fab fa-linkedin-in mr-2"></small><small>Linkedin</small>
             </a>
-            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #52AAF4;">
-                <small class="fab fa-twitter mr-2"></small><small>12,345 Followers</small>
-            </a>
-        </div>
-        <div class="d-flex mb-3">
-            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #0185AE;">
-                <small class="fab fa-linkedin-in mr-2"></small><small>12,345 Connects</small>
-            </a>
-            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #C8359D;">
-                <small class="fab fa-instagram mr-2"></small><small>12,345 Followers</small>
+            <a href="https://www.instagram.com/fypmedia.id" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #C8359D;">
+                <small class="fab fa-instagram mr-2"></small><small>Instagram</small>
             </a>
         </div>
         <div class="d-flex mb-3">
-            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #DC472E;">
-                <small class="fab fa-youtube mr-2"></small><small>12,345 Subscribers</small>
+            <a href="https://www.youtube.com/@fypmediaid" class="d-block w-50 py-2 px-3 text-white text-decoration-none mr-2" style="background: #DC472E;">
+                <small class="fab fa-youtube mr-2"></small><small>Youtube</small>
             </a>
-            <a href="" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #1AB7EA;">
-                <small class="fab fa-vimeo-v mr-2"></small><small>12,345 Followers</small>
+            <a href="https://www.tiktok.com/@fypmedia.id" class="d-block w-50 py-2 px-3 text-white text-decoration-none ml-2" style="background: #1d1d1d;">
+                <small class="fab fa-tiktok mr-2"></small><small>Tiktok</small>
             </a>
         </div>
     </div>
@@ -65,9 +57,9 @@
                 <img src="{{ $news->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
-                        <a href="{{ route('category.show', $news->category->slug) }}">{{ $news->category->name }}</a>
+                        <a href="{{ route('category.index', ['cat' => $news->category->slug]) }}">{{ $news->category->name }}</a>
                         <span class="px-1">/</span>
-                        <span>{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
+                        <span>{{ \Carbon\Carbon::parse($news->tanggal_posting)->diffForHumans() }}</span>
                     </div>
                     <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a>
                 </div>

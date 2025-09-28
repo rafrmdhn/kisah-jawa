@@ -17,7 +17,7 @@
             <h4 class="font-weight-bold mb-4">Categories</h4>
             <div class="d-flex flex-wrap m-n1">
                 @foreach($categories as $category)
-                    <a href="" class="btn btn-sm btn-outline-secondary m-1">{{ $category->name }}</a>
+                    <a href="{{ route('category.index', ['cat' => $category->slug]) }}" class="btn btn-sm btn-outline-secondary m-1">{{ $category->name }}</a>
                 @endforeach
             </div>
         </div>

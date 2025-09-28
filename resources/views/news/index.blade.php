@@ -32,7 +32,7 @@
                                 <div class="mb-1">
                                     <a class="text-white" href="">{{ $news->category->name }}</a>
                                     <span class="px-2 text-white">/</span>
-                                    <span class="text-white">{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
+                                    <span class="text-white">{{ \Carbon\Carbon::parse($news->tanggal_posting)->diffForHumans() }}</span>
                                 </div>
                                 <a class="h2 m-0 text-white font-weight-bold" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a>
                             </div>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Categories</h3>
+                        <h3 class="m-0">Kategori</h3>
                         <a class="text-secondary font-weight-medium text-decoration-none" href="/category">View All</a>
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
@@ -91,9 +91,9 @@
                         <div class="mb-1" style="font-size: 13px;">
                             <a class="text-white" href="">{{ $news->category->name }}</a>
                             <span class="px-1 text-white">/</span>
-                            <span class="text-white">{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
+                            <span class="text-white">{{ \Carbon\Carbon::parse($news->tanggal_posting)->diffForHumans() }}</span>
                         </div>
-                        <a class="h4 m-0 text-white" href="{{ route('articles.show', $news->slug) }}">{{ ($news->judul) }}</a>
+                        <a class="h5 m-0 text-white" href="{{ route('articles.show', $news->slug) }}">{{ ($news->judul) }}</a>
                     </div>
                 </div>
                 @endforeach
@@ -102,7 +102,6 @@
     </div>
     </div>
     <!-- Featured News Slider End -->
-
 
     <!-- Category News Slider Start -->
     <div class="container-fluid">
@@ -119,11 +118,11 @@
                                     <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
                                     <div class="overlay position-relative bg-light">
                                         <div class="mb-2" style="font-size: 13px;">
-                                            <a href="">{{ $artikel->category->name }}</a>
+                                            <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                             <span class="px-1">/</span>
-                                            <span>{{ \Carbon\Carbon::parse($news->tanggal_posting)->format('F d, Y') }}</span>
+                                            <span>{{ \Carbon\Carbon::parse($news->tanggal_posting)->diffForHumans() }}</span>
                                         </div>
-                                        <a class="h4 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
+                                        <a class="h5 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -157,9 +156,9 @@
                                         <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
-                                                <a href="">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
@@ -171,9 +170,9 @@
                                         <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
@@ -191,9 +190,9 @@
                                         <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
@@ -205,9 +204,9 @@
                                         <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
@@ -238,9 +237,9 @@
                                         <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
@@ -252,9 +251,9 @@
                                         <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
@@ -272,9 +271,9 @@
                                         <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h4" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                             {{ Str::limit(strip_tags($artikel->deskripsi), 120) }}
@@ -286,9 +285,9 @@
                                         <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
-                                                <a href="#">{{ $artikel->category->name }}</a>
+                                                <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
                                                 <span class="px-1">/</span>
-                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->format('F d, Y') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($artikel->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
                                             <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($artikel->judul, 50) }}</a>
                                         </div>
