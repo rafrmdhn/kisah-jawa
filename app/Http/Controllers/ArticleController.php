@@ -38,6 +38,7 @@ class ArticleController extends Controller
             ->take(5)
             ->get();
         $tags = Tag::all();
+
         return view('news.show', compact(
             'article',
             'trendingNews',

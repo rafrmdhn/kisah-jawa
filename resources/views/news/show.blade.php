@@ -7,7 +7,7 @@
             <nav class="breadcrumb bg-transparent m-0 p-0">
                 <a class="breadcrumb-item" href="#">Home</a>
                 <a class="breadcrumb-item" href="{{ route('category.index') }}">Category</a>
-                <a class="breadcrumb-item" href="{{ route('category.show', $article->category->slug) }}">{{ $article->category->name }}</a>
+                <a class="breadcrumb-item" href="{{ route('category.index', ['cat' => $article->category->slug]) }}">{{ $article->category->name }}</a>
                 <span class="breadcrumb-item active">{{ Str::limit($article->judul, 50) }}</span>
             </nav>
         </div>
@@ -24,9 +24,9 @@
                         <img class="img-fluid w-100" src="{{ $article->sumber_gambar }}" style="object-fit: cover;">
                         <div class="overlay position-relative bg-light">
                             <div class="mb-3">
-                                <a href="">{{ $article->category->name }}</a>
+                                <a href="{{ route('category.index', ['cat' => $article->category->slug]) }}">{{ $article->category->name }}</a>
                                 <span class="px-1">/</span>
-                                <span>{{ \Carbon\Carbon::parse($article->tanggal_posting)->format('F d, Y') }}</span>
+                                <span>{{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('l, d F Y H:i') }} WIB</span>
                             </div>
                             <div>
                                 <h3 class="mb-3">{{ $article->judul }}</h3>
