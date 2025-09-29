@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <style>
+<style>
         .news-card {
             display: grid;
             grid-template-columns: 320px 1fr;
@@ -25,25 +25,23 @@
             }
         }
     </style>
-
     <div class="container-fluid">
         <div class="container">
-            <nav class="breadcrumb bg-transparent m-0 p-0">
-                <a class="breadcrumb-item" href="{{ url('/') }}">Beranda</a>
-                <span class="breadcrumb-item active">Trending</span>
-            </nav>
+        <nav class="breadcrumb bg-transparent m-0 p-0">
+            <a class="breadcrumb-item" href="{{ url('/') }}">Home</a>
+            <span class="breadcrumb-item">Tags</span>
+            <span class="breadcrumb-item active">{{ $tag->name }}</span>
+        </nav>
         </div>
     </div>
 
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
-                <!-- Main -->
                 <div class="col-lg-8">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Trending</h3>
+                        <h3 class="m-0">{{ $tag->name }}</h3>
                     </div>
-
                     <div class="row row-cols-1 g-4">
                         @foreach($articles as $article)
                             <div class="col">
@@ -67,7 +65,6 @@
                         @endforeach
                     </div>
 
-                    {{-- Pagination --}}
                     <div class="row">
                         <div class="col-12 justify-content-center">
                             <nav aria-label="Page navigation">
@@ -79,7 +76,6 @@
                     </div>
                 </div>
 
-                <!-- Sidebar -->
                 @include('partials.side')
             </div>
         </div>

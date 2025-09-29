@@ -29,7 +29,7 @@ class ArticleController extends Controller
                     'Sejarah',
                 ]);
             })
-            ->whereDate('tanggal_posting', '>=', now()->subDays(30))
+            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
             ->orderBy('views', 'desc')
             ->take(5)
             ->get();
