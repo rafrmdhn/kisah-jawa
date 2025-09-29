@@ -23,24 +23,6 @@
     </div>
     <!-- Social Follow End -->
 
-    <!-- Newsletter Start -->
-    <div class="pb-3">
-        <div class="bg-light py-2 px-4 mb-3">
-            <h3 class="m-0">Newsletter</h3>
-        </div>
-        <div class="bg-light text-center p-4 mb-3">
-            <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
-            <div class="input-group" style="width: 100%;">
-                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                <div class="input-group-append">
-                    <button class="btn btn-primary">Sign Up</button>
-                </div>
-            </div>
-            <small>Sit eirmod nonumy kasd eirmod</small>
-        </div>
-    </div>
-    <!-- Newsletter End -->
-
     <!-- Ads Start -->
     <div class="mb-3 pb-3">
         <a href=""><img class="img-fluid" src="img/news-500x280-4.jpg" alt=""></a>
@@ -75,7 +57,7 @@
         </div>
         <div class="d-flex flex-wrap m-n1">
              @foreach(($article->tags ?? $tags) as $tag)
-                <a href="" class="btn btn-sm btn-outline-secondary m-1">
+                <a href="{{ route('tags.show', $tag->slug) }}" class="btn btn-sm btn-outline-secondary m-1">
                     {{ $tag->name }}
                 </a>
             @endforeach

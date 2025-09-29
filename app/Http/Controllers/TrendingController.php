@@ -16,13 +16,13 @@ class TrendingController extends Controller
 
         $articles = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
-            ->whereDate('tanggal_posting', '>=', now()->subDays(30))
+            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
             ->orderBy('views', 'desc')
-            ->paginate(12);
+            ->paginate(10);
 
         $trendingNews = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
-            ->whereDate('tanggal_posting', '>=', now()->subDays(30))
+            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
             ->orderBy('views', 'desc')
             ->take(5)->get();
 

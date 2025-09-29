@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="container">
             <nav class="breadcrumb bg-transparent m-0 p-0">
-                <a class="breadcrumb-item" href="{{ url('/') }}">Home</a>
+                <a class="breadcrumb-item" href="{{ url('/') }}">Beranda</a>
                 <span class="breadcrumb-item active">
                     {{ $activeCategory->name ?? 'Semua Kategori' }}
                 </span>
@@ -113,7 +113,7 @@
                         <div class="col-12 justify-content-center">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination justify-content-center">
-                                    {{ $articles->links('pagination::bootstrap-4') }}
+                                    {{ $articles->onEachSide(0)->links('pagination::bootstrap-4') }}
                                 </ul>
                             </nav>
                         </div>

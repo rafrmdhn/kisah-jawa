@@ -5,7 +5,7 @@
                 <div class="bg-primary text-white text-center py-2" style="width: 100px;">Trending</div>
                 <div class="owl-carousel owl-carousel-1 tranding-carousel position-relative d-inline-flex align-items-center ml-3" style="width: calc(100% - 100px); padding-left: 90px;">
                     @foreach($trendingNews as $news)
-                        <div class="text-truncate"><a class="text-secondary" href="">{{ $news->judul }}</a></div>
+                        <div class="text-truncate"><a class="text-secondary" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a></div>
                     @endforeach
                 </div>
             </div>
