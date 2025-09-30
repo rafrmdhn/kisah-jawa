@@ -21,9 +21,36 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function scopeTrending($query, int $days = 7)
+    public function scopePopular($q, $limit = 10, $sinceDays = null)
     {
-        return $query->whereDate('tanggal_posting', '>=', now()->subDays($days))
-                        ->orderBy('views', 'desc');
+        if ($sinceDays) {
+            $q->whereDate('tanggal_posting', '>=', now()->subDays($sinceDays));
+        }
+        return $q->orderBy('views','desc')->take($limit)
+                ->whereHas('category', function ($query) {
+                    $query->whereIn('name', [
+                        'Kriminal',
+                        'Misteri',
+                        'Film & Review',
+                        'Opini',
+                        'Sejarah',
+                    ]);
+                });
+    }
+
+    public function scopeTrending($q, $limit = 10, $rangeDays = 7)
+    {
+        return $q->whereDate('tanggal_posting', '>=', now()->subDays($rangeDays))
+                ->orderBy('views','desc')
+                ->take($limit)
+                ->whereHas('category', function ($query) {
+                    $query->whereIn('name', [
+                        'Kriminal',
+                        'Misteri',
+                        'Film & Review',
+                        'Opini',
+                        'Sejarah',
+                    ]);
+                });
     }
 }

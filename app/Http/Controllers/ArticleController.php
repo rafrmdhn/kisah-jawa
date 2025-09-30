@@ -19,20 +19,7 @@ class ArticleController extends Controller
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
             ->firstOrFail();
-        $trendingNews = Article::with('category')
-            ->whereHas('category', function ($query) {
-                $query->whereIn('name', [
-                    'Kriminal',
-                    'Misteri',
-                    'Film & Review',
-                    'Opini',
-                    'Sejarah',
-                ]);
-            })
-            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
-            ->orderBy('views', 'desc')
-            ->take(5)
-            ->get();
+        $trendingNews = Article::with('category')->trending(5, 7)->get();
         $categories = Category::withCount('articles')
             ->whereIn('name', ['Kriminal', 'Misteri', 'Opini', 'Film & Review', 'Sejarah'])
             ->take(5)

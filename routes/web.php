@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PopularController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TrendingController;
 
@@ -19,4 +20,5 @@ Route::post('/comments/store', [ArticleController::class, 'comment'])->name('com
 Route::get('/trending', [TrendingController::class, 'index'])->name('trending.index');
 Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
 Route::get('/search', [SearchController::class, 'index'])->name('search.index');
+Route::get('/populer', [PopularController::class, 'index'])->name('popular.index');
 
