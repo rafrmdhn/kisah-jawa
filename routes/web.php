@@ -17,8 +17,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 Route::post('/comments/store', [ArticleController::class, 'comment'])->name('comments.store');
-Route::get('/trending', [TrendingController::class, 'index'])->name('trending.index');
+Route::get('/trending', [ArticleController::class, 'trending'])->name('trending.index');
 Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
-Route::get('/search', [SearchController::class, 'index'])->name('search.index');
-Route::get('/populer', [PopularController::class, 'index'])->name('popular.index');
+Route::get('/search', [ArticleController::class, 'search'])->name('search.index');
+Route::get('/populer', [ArticleController::class, 'popular'])->name('popular.index');
+Route::get('/newest', [ArticleController::class, 'newest'])->name('newest.index');
 

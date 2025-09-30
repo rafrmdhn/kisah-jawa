@@ -30,7 +30,7 @@
         <div class="container">
             <nav class="breadcrumb bg-transparent m-0 p-0">
                 <a class="breadcrumb-item" href="{{ url('/') }}">Beranda</a>
-                <span class="breadcrumb-item active">Trending</span>
+                <span class="breadcrumb-item active">Populer</span>
             </nav>
         </div>
     </div>
@@ -41,7 +41,7 @@
                 <!-- Main -->
                 <div class="col-lg-8">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Trending</h3>
+                        <h3 class="m-0">Populer</h3>
                     </div>
 
                     <div class="row row-cols-1 g-4">
