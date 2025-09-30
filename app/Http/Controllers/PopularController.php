@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
+use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Tag;
+use Illuminate\Http\Request;
 
-class TrendingController extends Controller
+class PopularController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function index(){
         $allowedCategories = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
 
-        $articles = Article::with('category')->trending(7)->paginate(10);
+        $articles = Article::with('category')->popular()->paginate(10);
 
         $trendingNews = Article::with('category')->trending(5, 7)->get();
 

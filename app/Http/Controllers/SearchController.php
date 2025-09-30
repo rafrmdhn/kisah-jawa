@@ -29,20 +29,7 @@ class SearchController extends Controller
             ->orderBy('tanggal_posting','desc')
             ->paginate(12)
             ->appends($request->query());
-        $trendingNews = Article::with('category')
-            ->whereHas('category', function ($query) {
-                $query->whereIn('name', [
-                    'Kriminal',
-                    'Misteri',
-                    'Film & Review',
-                    'Opini',
-                    'Sejarah',
-                ]);
-            })
-            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
-            ->orderBy('views', 'desc')
-            ->take(5)
-            ->get();
+        $trendingNews = Article::with('category')->trending(5, 7)->get();
         $tags = Tag::all();
         return view('search.index', compact(
             'articles',

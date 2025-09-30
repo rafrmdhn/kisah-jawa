@@ -34,12 +34,7 @@ class CategoryController extends Controller
 
         $allowedNames = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
 
-        $trendingNews = Article::with('category')
-            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedNames))
-            ->whereDate('tanggal_posting', '>=', now()->subDays(7))
-            ->orderBy('views', 'desc')
-            ->take(5)
-            ->get();
+        $trendingNews = Article::with('category')->trending(5, 7)->get();
 
         $sidebarCategories = Category::withCount('articles')
             ->whereIn('name', $allowedNames)
