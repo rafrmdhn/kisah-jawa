@@ -4,7 +4,7 @@
             <a href="index.html" class="navbar-brand">
                 <h1 class="mb-2 mt-n2 display-5 text-uppercase"><span class="text-primary">Kisah</span>Jawa</h1>
             </a>
-            <p>Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
+            <p>Portal berita yang menyajikan cerita menarik seputar kriminal, misteri, film & review, opini, dan sejarah. Menghadirkan informasi yang informatif bagi pembaca.</p>
             <div class="d-flex justify-content-start mt-4">
                 <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>

@@ -16,13 +16,15 @@
                 <a href="{{ route('trending.index') }}" class="nav-item nav-link {{ request()->routeIs('trending.index') ? 'active' : '' }}">Trending</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Kontak</a>
             </div>
-            <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
-                <input type="text" class="form-control" placeholder="Keyword">
+            <form action="{{ route('search.index') }}" method="GET" class="input-group ml-auto" style="width: 100%; max-width: 300px;">
+                <input type="search" name="q" class="form-control" placeholder="Cari berita…"
+                    value="{{ request('q') }}" required>
                 <div class="input-group-append">
-                    <button class="input-group-text text-secondary"><i
-                            class="fa fa-search"></i></button>
+                    <button type="submit" class="input-group-text text-secondary">
+                        <i class="fa fa-search"></i>
+                    </button>
                 </div>
-            </div>
+            </form>
         </div>
     </nav>
 </div>
