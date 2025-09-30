@@ -52,4 +52,107 @@ class ArticleController extends Controller
 
         return back()->with('success', 'Komentar berhasil dikirim!');
     }
+
+    public function search(Request $request)
+    {
+        $q     = trim($request->query('q', ''));
+        $cat   = $request->query('cat');
+        $sort  = $request->query('sort', 'recent');
+        $days  = (int) $request->query('days', 0);
+        $allowed = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
+
+        $categories = Category::select('name','slug')->orderBy('name')->get();
+
+        $articles = Article::with('category')
+            ->when($q !== '', function($query) use ($q) {
+                $query->where(function($qq) use ($q) {
+                    $qq->where('judul', 'like', "%{$q}%");
+                });
+            })
+            ->whereHas('category', fn($c) => $c->whereIn('name', $allowed))
+            ->orderBy('tanggal_posting','desc')
+            ->paginate(12)
+            ->appends($request->query());
+        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $tags = Tag::all();
+        return view('news.search', compact(
+            'articles',
+            'q',
+            'cat',
+            'sort',
+            'days',
+            'categories',
+            'trendingNews',
+            'tags'
+        ));
+    }
+
+    public function popular(){
+        $allowedCategories = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
+
+        $articles = Article::with('category')->popular()->paginate(10);
+
+        $trendingNews = Article::with('category')->trending(5, 7)->get();
+
+        $categories = Category::withCount('articles')
+            ->whereIn('name', $allowedCategories)
+            ->take(5)->get();
+
+        $tags = Tag::latest()->take(20)->get();
+
+        return view('news.popular', compact(
+            'articles',
+            'trendingNews',
+            'categories',
+            'tags'
+        ));
+    }
+
+    public function trending(Request $request)
+    {
+        $allowedCategories = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
+
+        $articles = Article::with('category')->trending(7)->paginate(10);
+
+        $trendingNews = Article::with('category')->trending(5, 7)->get();
+
+        $categories = Category::withCount('articles')
+            ->whereIn('name', $allowedCategories)
+            ->take(5)->get();
+
+        $tags = Tag::latest()->take(20)->get();
+
+        return view('news.trending', compact(
+            'articles',
+            'trendingNews',
+            'categories',
+            'tags'
+        ));
+    }
+
+    public function newest(Request $request)
+    {
+        $allowed = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
+
+        $cat = $request->query('cat');
+
+        $articles = Article::with('category')
+            ->when($cat, fn($q) => $q->whereHas('category', fn($c) => $c->where('slug', $cat)))
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
+            ->newest()
+            ->paginate(12)
+            ->appends($request->query());
+
+        $trendingNews = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
+            ->whereDate('tanggal_posting','>=', now()->subDays(7))
+            ->orderBy('views','desc')->take(5)->get();
+
+        $categories = Category::withCount('articles')
+            ->whereIn('name', $allowed)->take(5)->get();
+
+        $tags = Tag::query()->latest()->take(20)->get();
+
+        return view('news.newest', compact('articles','trendingNews','categories','tags','cat'));
+    }
 }

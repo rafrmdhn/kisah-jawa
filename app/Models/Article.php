@@ -53,4 +53,9 @@ class Article extends Model
                     ]);
                 });
     }
+
+    public function scopeNewest($q)
+    {
+        return $q->orderBy('tanggal_posting', 'desc');
+    }
 }
