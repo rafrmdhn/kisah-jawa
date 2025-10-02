@@ -14,7 +14,10 @@
             {{ date('l, d F Y') }}
         </div>
     </div>
-    <div class="row align-items-center py-2 px-lg-5">
+    <div class="row align-items-center py-2 px-lg-5"
+            style="background:
+            linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+            url('/img/pattern-kisahjawa.jpg') center / auto repeat;">
         <div class="col-lg-4">
             <a href="" class="navbar-brand d-none d-lg-block">
                 <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">Kisah</span>Jawa</h1>

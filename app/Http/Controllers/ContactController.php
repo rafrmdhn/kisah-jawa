@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Article;
+use App\Models\Contact;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -25,21 +26,20 @@ class ContactController extends Controller
         ));
     }
 
-    // public function send(Request $request)
-    // {
-    //     $data = $request->validate([
-    //         'name'    => 'required|string|max:255',
-    //         'email'   => 'required|email',
-    //         'subject' => 'required|string|max:255',
-    //         'message' => 'required|string',
-    //     ]);
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name'    => 'required|string|max:120',
+            'email'   => 'required|email|max:190',
+            'subject' => 'required|string|max:190',
+            'message' => 'required|string',
+        ]);
 
-    //     Mail::send('emails.contact', $data, function($message) use ($data) {
-    //         $message->to('admin@example.com') // ganti dengan email admin
-    //                 ->subject($data['subject'])
-    //                 ->replyTo($data['email'], $data['name']);
-    //     });
+        $data['ip']         = $request->ip();
+        $data['user_agent'] = $request->userAgent();
 
-    //     return back()->with('success', 'Pesan berhasil dikirim!');
-    // }
+        Contact::create($data);
+
+        return back()->with('success', 'Pesan berhasil dikirim. Terima kasih!');
+    }
 }
