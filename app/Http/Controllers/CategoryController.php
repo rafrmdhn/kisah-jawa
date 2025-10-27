@@ -12,17 +12,16 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $activeSlug = $request->query('cat');
-        $categories = Category::whereIn('name', [
-            'Kriminal',
-            'Misteri',
-            'Film & Review',
-            'Opini',
-            'Sejarah'
-        ])
-        ->take(5)
-        ->get();
+        $allowedNames = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
+        $categories = Category::whereIn('name', $allowedNames)
+            ->take(5)
+            ->get();
 
-        $query = Article::with('category')->latest();
+        $query =  Article::with('category')
+            ->whereHas('category', function ($q) use ($allowedNames) {
+                $q->whereIn('name', $allowedNames);
+            })
+            ->latest();
 
         $activeCategory = null;
         if ($activeSlug) {
@@ -32,7 +31,6 @@ class CategoryController extends Controller
 
         $articles = $query->paginate(10)->appends(['cat' => $activeSlug]);
 
-        $allowedNames = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
 
         $trendingNews = Article::with('category')->trending(5, 7)->get();
 

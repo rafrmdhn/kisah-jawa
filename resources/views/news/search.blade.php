@@ -20,7 +20,7 @@
 
                     <style>
                         .news-card{
-                            display:flex; gap:12px; background:#fff; border-radius:.5rem;
+                            display:flex; gap:12px; background:#fff;
                             overflow:hidden; border:1px solid #eee;
                         }
                         .news-card .news-thumb{
@@ -31,7 +31,7 @@
                             transition: transform .3s ease;
                         }
                         .news-card:hover .news-thumb img{ transform: scale(1.04); }
-                        .news-card .overlay{
+                        .news-card .card{
                             flex:1; padding:12px 14px;
                             display:flex; flex-direction:column; justify-content:center;
                         }
@@ -50,7 +50,7 @@
                                             <img src="{{ $article->sumber_gambar }}" alt="{{ $article->judul }}" loading="lazy">
                                         </div>
 
-                                        <div class="overlay position-relative bg-light">
+                                        <div class="card position-relative bg-light">
                                             <div class="mb-2" style="font-size:14px;">
                                                 <a href="{{ route('category.index', ['cat' => $article->category->slug]) }}">
                                                 {{ $article->category->name }}

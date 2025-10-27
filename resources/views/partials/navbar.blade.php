@@ -16,7 +16,7 @@
                 <a href="{{ route('trending.index') }}" class="nav-item nav-link {{ request()->routeIs('trending.index') ? 'active' : '' }}">Trending</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Kontak</a>
             </div>
-            <form action="{{ route('search.index') }}" method="GET" class="input-group ml-auto" style="width: 100%; max-width: 300px;">
+            <form action="{{ route('search.index') }}" class="input-group ml-auto" style="width: 100%; max-width: 300px;">
                 <input type="search" name="q" class="form-control" placeholder="Cari berita…"
                     value="{{ request('q') }}" required>
                 <div class="input-group-append">

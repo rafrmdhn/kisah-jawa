@@ -57,11 +57,11 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                    <input type="text" name="name" class="form-control p-4" placeholder="Nama"
-                                            value="{{ old('name') }}" required>
-                                    @error('name')
-                                        <p class="help-block text-danger mb-0">{{ $message }}</p>
-                                    @enderror
+                                        <input type="text" name="name" class="form-control p-4" placeholder="Nama"
+                                                value="{{ old('name') }}" required>
+                                        @error('name')
+                                            <p class="help-block text-danger mb-0">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -74,15 +74,28 @@
                                     @enderror
                                     </div>
                                 </div>
-                                </div>
+                            </div>
 
-                                <div class="form-group mb-3">
-                                    <input type="text" name="subject" class="form-control p-4" placeholder="Subjek"
-                                            value="{{ old('subject') }}" required>
-                                    @error('subject')
-                                        <p class="help-block text-danger mb-0">{{ $message }}</p>
-                                    @enderror
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <input type="text" name="telp" class="form-control p-4" placeholder="No. Telepon"
+                                                value="{{ old('telp') }}" required>
+                                        @error('telp')
+                                            <p class="help-block text-danger mb-0">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <input type="text" name="subject" class="form-control p-4" placeholder="Subjek"
+                                                value="{{ old('subject') }}" required>
+                                        @error('subject')
+                                            <p class="help-block text-danger mb-0">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
 
                                 <div class="form-group mb-3">
                                     <textarea name="message" rows="4" class="form-control" placeholder="Pesan" required>{{ old('message') }}</textarea>

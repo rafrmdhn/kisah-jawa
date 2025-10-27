@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Contact;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Mail\ContactFormSubmitted;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -29,16 +30,15 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'    => 'required|string|max:120',
-            'email'   => 'required|email|max:190',
-            'subject' => 'required|string|max:190',
-            'message' => 'required|string',
+            'name'    => ['required','string','max:100'],
+            'email'   => ['required','email','max:150'],
+            'telp'    => ['required','string','max:12'],
+            'subject' => ['required','string','max:150'],
+            'message' => ['required','string','max:5000'],
         ]);
 
-        $data['ip']         = $request->ip();
-        $data['user_agent'] = $request->userAgent();
-
-        Contact::create($data);
+        $to = 'ramadhanrafi871@gmail.com';
+        Mail::to($to)->send(new ContactFormSubmitted($data));
 
         return back()->with('success', 'Pesan berhasil dikirim. Terima kasih!');
     }
