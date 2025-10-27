@@ -28,16 +28,6 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-            <h4 class="font-weight-bold mb-4">Quick Links</h4>
-            <div class="d-flex flex-column justify-content-start">
-                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>About</a>
-                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Advertise</a>
-                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Privacy & policy</a>
-                <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Terms & conditions</a>
-                <a class="text-secondary" href="#"><i class="fa fa-angle-right text-dark mr-2"></i>Contact</a>
-            </div>
-        </div>
     </div>
 </div>
 <div class="container-fluid py-4 px-sm-3 px-md-5">
