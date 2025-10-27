@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ArticleController extends Controller
 {
@@ -15,13 +16,26 @@ class ArticleController extends Controller
         return view('news.index', compact('articles'));
     }
 
-    public function show($slug) {
+    public function show($slug, Request $request) {
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
             ->firstOrFail();
+
+        $sessKey = "viewed_article_{$article->id}";
+        if (! $request->session()->has($sessKey)) {
+            \App\Models\Article::whereKey($article->id)->increment('views');
+            $request->session()->put($sessKey, now());
+        }
+
         $trendingNews = Article::with('category')->trending(5, 7)->get();
         $categories = Category::withCount('articles')
-            ->whereIn('name', ['Kriminal', 'Misteri', 'Opini', 'Film & Review', 'Sejarah'])
+            ->whereIn('name', [
+                'Kriminal',
+                'Misteri',
+                'Opini',
+                'Film & Review',
+                'Sejarah'
+            ])
             ->take(5)
             ->get();
         $tags = Tag::all();

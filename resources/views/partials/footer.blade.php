@@ -7,7 +7,7 @@
             <p>Portal berita yang menyajikan cerita menarik seputar kriminal, misteri, film & review, opini, dan sejarah. Menghadirkan informasi yang informatif bagi pembaca.</p>
             <div class="d-flex justify-content-start mt-4">
                 <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="https://www.tiktok.com/@fypmedia.id"><i class="fab fa-tiktok"></i></a>
-                <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="linkedin.com/company/fypgroup/"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="https://linkedin.com/company/fypgroup/"><i class="fab fa-linkedin-in"></i></a>
                 <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="https://www.instagram.com/fypmedia.id"><i class="fab fa-instagram"></i></a>
                 <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;" href="https://www.youtube.com/@fypmediaid"><i class="fab fa-youtube"></i></a>
             </div>
