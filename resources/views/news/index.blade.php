@@ -7,7 +7,7 @@
             <div class="owl-carousel owl-carousel-2 carousel-item-3 position-relative">
                 @foreach($topNews as $news)
                     <div class="d-flex">
-                        <img src="{{ $news->sumber_gambar }}" style="width: 80px; height: 80px; object-fit: cover;">
+                        <img src="{{ $news->gambar }}" style="width: 80px; height: 80px; object-fit: cover;">
                         <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
                             <a class="text-secondary font-weight-semi-bold" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="owl-carousel owl-carousel-2 carousel-item-1 position-relative mb-3 mb-lg-0">
                         @foreach($mainNews as $news)
                         <div class="position-relative overflow-hidden" style="height: 435px;">
-                            <img class="img-fluid h-100" src="{{ $news->sumber_gambar }}" style="object-fit: cover;">
+                            <img class="img-fluid h-100" src="{{ $news->gambar }}" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-1">
                                     <a class="text-white" href="">{{ $news->category->name }}</a>
@@ -69,7 +69,7 @@
             <div class="owl-carousel owl-carousel-2 carousel-item-4 position-relative">
                 @foreach($featuredNews as $news)
                     <div class="position-relative overflow-hidden" style="height: 300px;">
-                        <img class="img-fluid w-100 h-100" src="{{ $news->sumber_gambar }}" style="object-fit: cover;">
+                        <img class="img-fluid w-100 h-100" src="{{ $news->gambar }}" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-1" style="font-size: 13px;">
                                 <a class="text-white" href="{{ route('category.index', ['cat' => $news->category->slug]) }}">{{ $news->category->name }}</a>
@@ -97,7 +97,7 @@
                         <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
                             @foreach($category->articles as $artikel)
                                 <div class="position-relative">
-                                    <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
+                                    <img class="img-fluid w-100" src="{{ $artikel->gambar }}" style="object-fit: cover;">
                                     <div class="overlay position-relative bg-light">
                                         <div class="mb-2" style="font-size: 13px;">
                                             <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -135,7 +135,7 @@
                                 @if($key === 0)
                                     {{-- Artikel besar --}}
                                     <div class="position-relative mb-3">
-                                        <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
+                                        <img class="img-fluid w-100" src="{{ $artikel->gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -149,7 +149,7 @@
                                 @else
                                     {{-- Artikel kecil --}}
                                     <div class="d-flex mb-3">
-                                        <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <img src="{{ $artikel->gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -169,7 +169,7 @@
                                 @if($key === 0)
                                     {{-- Artikel besar --}}
                                     <div class="position-relative mb-3">
-                                        <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
+                                        <img class="img-fluid w-100" src="{{ $artikel->gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -183,7 +183,7 @@
                                 @else
                                     {{-- Artikel kecil --}}
                                     <div class="d-flex mb-3">
-                                        <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <img src="{{ $artikel->gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -216,7 +216,7 @@
                                 @if($key === 0)
                                     {{-- Artikel besar --}}
                                     <div class="position-relative mb-3">
-                                        <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
+                                        <img class="img-fluid w-100" src="{{ $artikel->gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -230,7 +230,7 @@
                                 @else
                                     {{-- Artikel kecil --}}
                                     <div class="d-flex mb-3">
-                                        <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <img src="{{ $artikel->gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -250,7 +250,7 @@
                                 @if($key === 0)
                                     {{-- Artikel besar --}}
                                     <div class="position-relative mb-3">
-                                        <img class="img-fluid w-100" src="{{ $artikel->sumber_gambar }}" style="object-fit: cover;">
+                                        <img class="img-fluid w-100" src="{{ $artikel->gambar }}" style="object-fit: cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size: 14px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
@@ -264,7 +264,7 @@
                                 @else
                                     {{-- Artikel kecil --}}
                                     <div class="d-flex mb-3">
-                                        <img src="{{ $artikel->sumber_gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <img src="{{ $artikel->gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
                                         <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                             <div class="mb-1" style="font-size: 13px;">
                                                 <a href="{{ route('category.index', ['cat' => $artikel->category->slug]) }}">{{ $artikel->category->name }}</a>
