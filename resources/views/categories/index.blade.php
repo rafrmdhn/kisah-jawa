@@ -63,7 +63,7 @@
                             @if($key < 4)
                                 <div class="col-lg-6">
                                     <div class="position-relative mb-3">
-                                        <img class="img-fluid w-100" src="{{ $article->gambar }}" style="object-fit:cover;">
+                                        <img class="img-fluid w-100" src="{{ asset($article->gambar) }}" style="object-fit:cover;">
                                         <div class="overlay position-relative bg-light">
                                             <div class="mb-2" style="font-size:14px;">
                                                 <a href="{{ route('category.index', ['cat' => $article->category->slug]) }}">
@@ -91,7 +91,7 @@
                             @if($key < 4) @continue @endif
                             <div class="col-lg-6">
                                 <div class="d-flex mb-3">
-                                    <img src="{{ $article->gambar }}" style="width:100px;height:100px;object-fit:cover;">
+                                    <img src="{{ asset($article->gambar) }}" style="width:100px;height:100px;object-fit:cover;">
                                     <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height:100px;">
                                         <div class="mb-1" style="font-size:13px;">
                                             <a href="{{ route('category.index', ['cat' => $article->category->slug]) }}">

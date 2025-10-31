@@ -36,7 +36,7 @@
         </div>
         @foreach($trendingNews as $news)
             <div class="d-flex mb-3">
-                <img src="{{ $news->gambar }}" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="{{ asset($news->gambar) }}" style="width: 100px; height: 100px; object-fit: cover;">
                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                     <div class="mb-1" style="font-size: 13px;">
                         <a href="{{ route('category.index', ['cat' => $news->category->slug]) }}">{{ $news->category->name }}</a>

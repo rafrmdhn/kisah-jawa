@@ -47,7 +47,7 @@
                             <div class="col">
                                 <article class="news-card mb-4">
                                     <div class="news-thumb">
-                                        <img src="{{ $article->gambar }}" alt="{{ $article->judul }}" loading="lazy">
+                                        <img src="{{ asset($article->gambar) }}" alt="{{ $article->judul }}" loading="lazy">
                                     </div>
 
                                     <div class="overlay position-relative bg-light">
