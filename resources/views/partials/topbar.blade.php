@@ -22,7 +22,7 @@
                     url('/img/pattern.jpg') center / cover no-repeat;
                 ">
         <div class="col-lg-4">
-            <a href="{{ route('home') }}" class="navbar-brand d-none d-lg-block">
+            <a href="" class="navbar-brand d-none d-lg-block">
                 <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">Kisah</span>Jawa</h1>
             </a>
         </div>
