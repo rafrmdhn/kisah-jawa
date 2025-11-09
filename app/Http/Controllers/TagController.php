@@ -14,14 +14,18 @@ class TagController extends Controller
         $tags = Tag::all();
         $articles = Article::with('category','tags')
             ->whereHas('tags', fn($q) => $q->where('tags.id', $tag->id))
-            ->latest()
+            ->terbit()
+            ->orderBy('tanggal_posting','desc')
             ->paginate(10);
 
         $allowed = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowed)->take(5)->get();
 
-        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $trendingNews = Article::with('category')
+            ->terbit()
+            ->trending(5, 7)
+            ->get();
         return view('tags.show', compact(
             'tag',
             'articles',

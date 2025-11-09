@@ -58,4 +58,9 @@ class Article extends Model
     {
         return $q->orderBy('tanggal_posting', 'desc');
     }
+
+    public function scopeTerbit($q)
+    {
+        return $q->where('tanggal_posting', '<=', now('Asia/Jakarta'));
+    }
 }

@@ -14,7 +14,10 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $trendingNews = Article::with('category')
+            ->terbit()
+            ->trending(5, 7)
+            ->get();
         $categories = Category::withCount('articles')
             ->whereIn('name', ['Kriminal', 'Misteri', 'Opini', 'Film & Review', 'Sejarah'])
             ->take(5)

@@ -21,7 +21,8 @@ class CategoryController extends Controller
             ->whereHas('category', function ($q) use ($allowedNames) {
                 $q->whereIn('name', $allowedNames);
             })
-            ->latest();
+            ->terbit()
+            ->orderBy('tanggal_posting','desc');
 
         $activeCategory = null;
         if ($activeSlug) {
@@ -32,7 +33,10 @@ class CategoryController extends Controller
         $articles = $query->paginate(10)->appends(['cat' => $activeSlug]);
 
 
-        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $trendingNews = Article::with('category')
+            ->terbit()
+            ->trending(5, 7)
+            ->get();
 
         $sidebarCategories = Category::withCount('articles')
             ->whereIn('name', $allowedNames)

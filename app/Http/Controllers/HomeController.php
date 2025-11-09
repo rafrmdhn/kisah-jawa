@@ -44,7 +44,8 @@ class HomeController extends Controller
                     'Sejarah',
                 ]);
             })
-            ->latest()
+            ->terbit()
+            ->orderBy('tanggal_posting','desc')
             ->take(5)
             ->get();
         $mainNews = Article::with('category')
@@ -57,7 +58,8 @@ class HomeController extends Controller
                     'Sejarah',
                 ]);
             })
-            ->latest()
+            ->terbit()
+            ->orderBy('tanggal_posting','desc')
             ->take(2)
             ->get();
         $featuredNews = Article::with('category')
@@ -71,7 +73,8 @@ class HomeController extends Controller
                     'Sejarah',
                 ]);
             })
-            ->latest()
+            ->terbit()
+            ->orderBy('tanggal_posting','desc')
             ->take(5)
             ->get();
         $categories = Category::withCount('articles')
@@ -88,6 +91,7 @@ class HomeController extends Controller
                     'Sejarah',
                 ]);
             })
+            ->terbit()
             ->orderBy('views', 'desc')
             ->take(3)
             ->get();
@@ -101,6 +105,7 @@ class HomeController extends Controller
                     'Sejarah',
                 ]);
             })
+            ->terbit()
             ->orderBy('views', 'desc')
             ->skip(3)
             ->take(3)
@@ -115,6 +120,7 @@ class HomeController extends Controller
                     'Sejarah',
                 ]);
             })
+            ->terbit()
             ->orderBy('tanggal_posting', 'desc')
             ->take(3)
             ->get();
@@ -128,11 +134,15 @@ class HomeController extends Controller
                     'Sejarah',
                 ]);
             })
+            ->terbit()
             ->orderBy('tanggal_posting', 'desc')
             ->skip(3)
             ->take(3)
             ->get();
-        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $trendingNews = Article::with('category')
+            ->terbit()
+            ->trending(5, 7)
+            ->get();
         return view('news.index', compact(
             'topNews',
             'mainNews',
