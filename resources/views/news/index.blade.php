@@ -9,7 +9,7 @@
                     <div class="d-flex">
                         <img src="{{ $news->gambar }}" style="width: 80px; height: 80px; object-fit: cover;">
                         <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
-                            <a class="text-secondary font-weight-semi-bold" href="{{ route('articles.show', $news->slug) }}">{{ $news->judul }}</a>
+                            <a class="text-secondary font-weight-semi-bold" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($news->judul, 20) }}</a>
                         </div>
                     </div>
                 @endforeach
