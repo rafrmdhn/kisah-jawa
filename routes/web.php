@@ -15,7 +15,6 @@ Route::get('/category', [CategoryController::class, 'index'])->name('category.in
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:1,1');
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 Route::post('/comments/store', [ArticleController::class, 'comment'])->name('comments.store');
 Route::get('/trending', [ArticleController::class, 'trending'])->name('trending.index');

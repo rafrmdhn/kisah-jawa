@@ -12,13 +12,17 @@ use Illuminate\Support\Facades\Cache;
 class ArticleController extends Controller
 {
     public function index() {
-        $articles = Article::with('category','tags')->latest()->paginate(10);
+        $articles = Article::with('category','tags')
+            ->terbit()
+            ->latest()
+            ->paginate(10);
         return view('news.index', compact('articles'));
     }
 
     public function show($slug, Request $request) {
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
+            ->terbit()
             ->firstOrFail();
 
         $sessKey = "viewed_article_{$article->id}";
@@ -27,7 +31,10 @@ class ArticleController extends Controller
             $request->session()->put($sessKey, now());
         }
 
-        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $trendingNews = Article::with('category')
+            ->trending(5, 7)
+            ->terbit()
+            ->get();
         $categories = Category::withCount('articles')
             ->whereIn('name', [
                 'Kriminal',
@@ -84,10 +91,14 @@ class ArticleController extends Controller
                 });
             })
             ->whereHas('category', fn($c) => $c->whereIn('name', $allowed))
+            ->terbit()
             ->orderBy('tanggal_posting','desc')
             ->paginate(12)
             ->appends($request->query());
-        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $trendingNews = Article::with('category')
+            ->trending(5, 7)
+            ->terbit()
+            ->get();
         $tags = Tag::all();
         return view('news.search', compact(
             'articles',
@@ -104,9 +115,14 @@ class ArticleController extends Controller
     public function popular(){
         $allowedCategories = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
 
-        $articles = Article::with('category')->popular()->paginate(10);
+        $articles = Article::with('category')
+            ->orderBy('tanggal_posting','desc')
+            ->popular()
+            ->paginate(10);
 
-        $trendingNews = Article::with('category')->trending(5, 7)->get();
+        $trendingNews = Article::with('category')
+            ->trending(5, 7)
+            ->get();
 
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)
