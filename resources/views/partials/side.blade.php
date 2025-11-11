@@ -43,7 +43,7 @@
                         <span class="px-1">/</span>
                         <span>{{ \Carbon\Carbon::parse($news->tanggal_posting)->diffForHumans() }}</span>
                     </div>
-                    <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($news->judul, 30) }}</a>
+                    <a class="h6 m-0" href="{{ route('articles.show', $news->slug) }}">{{ Str::limit($news->judul, 50) }}</a>
                 </div>
             </div>
         @endforeach
