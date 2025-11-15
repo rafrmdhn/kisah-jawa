@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Contact;
@@ -14,6 +15,7 @@ class ContactController extends Controller
 {
     public function index()
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $trendingNews = Article::with('category')
             ->terbit()
             ->trending(5, 7)
@@ -26,7 +28,8 @@ class ContactController extends Controller
         return view('contact.index', compact(
             'trendingNews',
             'categories',
-            'tags'
+            'tags',
+            'headerAd'
         ));
     }
 

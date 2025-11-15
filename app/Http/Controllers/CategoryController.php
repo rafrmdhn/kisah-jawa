@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
@@ -11,6 +12,8 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $activeSlug = $request->query('cat');
         $allowedNames = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
         $categories = Category::whereIn('name', $allowedNames)
@@ -52,7 +55,9 @@ class CategoryController extends Controller
             'articles',
             'trendingNews',
             'sidebarCategories',
-            'tags'
+            'tags',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 }

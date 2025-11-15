@@ -51,9 +51,9 @@ class DatabaseSeeder extends Seeder
         //     Tag::create($tag);
         // }
 
-        // $this->call([
-        //     ArtikelSeeder::class,
-        // ]);
+        $this->call([
+            AdSeeder::class,
+        ]);
 
         // $this->call(ArtikelTagSeeder::class);
     }

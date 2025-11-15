@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Comment;
@@ -19,7 +20,10 @@ class ArticleController extends Controller
         return view('news.index', compact('articles'));
     }
 
-    public function show($slug, Request $request) {
+    public function show($slug, Request $request)
+    {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
             ->terbit()
@@ -51,7 +55,9 @@ class ArticleController extends Controller
             'article',
             'trendingNews',
             'categories',
-            'tags'
+            'tags',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 
@@ -76,6 +82,8 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $q     = trim($request->query('q', ''));
         $cat   = $request->query('cat');
         $sort  = $request->query('sort', 'recent');
@@ -108,11 +116,15 @@ class ArticleController extends Controller
             'days',
             'categories',
             'trendingNews',
-            'tags'
+            'tags',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 
     public function popular(){
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $allowedCategories = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
 
         $articles = Article::with('category')
@@ -134,12 +146,16 @@ class ArticleController extends Controller
             'articles',
             'trendingNews',
             'categories',
-            'tags'
+            'tags',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 
     public function trending(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $allowedCategories = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
 
         $articles = Article::with('category')->trending(7)->paginate(10);
@@ -156,12 +172,16 @@ class ArticleController extends Controller
             'articles',
             'trendingNews',
             'categories',
-            'tags'
+            'tags',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 
     public function newest(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $allowed = ['Kriminal','Misteri','Film & Review','Opini','Sejarah'];
 
         $cat = $request->query('cat');
@@ -183,6 +203,6 @@ class ArticleController extends Controller
 
         $tags = Tag::query()->latest()->take(20)->get();
 
-        return view('news.newest', compact('articles','trendingNews','categories','tags','cat'));
+        return view('news.newest', compact('articles','trendingNews','categories','tags','cat', 'sidebarAd','headerAd'));
     }
 }

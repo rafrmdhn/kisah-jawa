@@ -24,9 +24,11 @@
     <!-- Social Follow End -->
 
     <!-- Ads Start -->
-    <div class="mb-3 pb-3">
-        <a href=""><img class="img-fluid" src="img/news-500x280-4.jpg" alt=""></a>
-    </div>
+    @if(!empty($sidebarAd))
+        <div class="mb-3 pb-3">
+            <a href="{{ $sidebarAd->link_url }}" target="_blank" rel="noopener"><img class="img-fluid" src="{{ $sidebarAd->image_path }}" alt="{{ $sidebarAd->title }}"></a>
+        </div>
+    @endif
     <!-- Ads End -->
 
     <!-- Popular News Start -->

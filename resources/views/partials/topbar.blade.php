@@ -26,8 +26,10 @@
                 <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">Kisah</span>Jawa</h1>
             </a>
         </div>
-        <div class="col-lg-8 text-center text-lg-right">
-            <img class="img-fluid" src="img/ads-700x70.jpg" alt="">
-        </div>
+        @if(!empty($headerAd))
+            <div class="col-lg-8 text-center text-lg-right">
+                <a href="{{ $headerAd->link_url }}" target="_blank" rel="noopener"><img class="img-fluid" src="{{ $headerAd->image_path }}" alt="{{ $headerAd->title }}"></a>
+            </div>
+        @endif
     </div>
 </div>
