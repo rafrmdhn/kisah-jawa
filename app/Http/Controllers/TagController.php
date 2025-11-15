@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
