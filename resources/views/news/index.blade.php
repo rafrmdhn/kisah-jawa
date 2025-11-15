@@ -198,9 +198,11 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 pb-3">
-                        <a href=""><img class="img-fluid w-100" src="img/ads-700x70.jpg" alt=""></a>
-                    </div>
+                    @if(!empty($headerAd))
+                        <div class="mb-3 pb-3">
+                            <a href="{{ $headerAd->link_url }}" target="_blank" rel="noopener"><img class="img-fluid w-100" src="{{ $headerAd->image_path }}" alt="{{ $headerAd->title }}"></a>
+                        </div>
+                    @endif
 
                     <div class="row">
                         <div class="col-12">

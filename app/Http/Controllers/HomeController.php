@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
@@ -12,6 +13,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $cardNames = ['Kriminal','Misteri','Film & Review','Opini'];
 
         $cardCats = Category::select('id','name','slug')
@@ -154,7 +157,9 @@ class HomeController extends Controller
             'latestRight',
             'tags',
             'trendingNews',
-            'categoryCards'
+            'categoryCards',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 }
