@@ -23,11 +23,9 @@
                         <img class="img-fluid w-100" src="{{ $article->gambar }}" style="object-fit: cover;">
                         <div class="overlay position-relative bg-light">
                             @if (!empty($article->sumber_gambar))
-                                <div class="mt-1 text-right">
-                                    <small class="text-muted">
-                                        Sumber gambar: {{ $article->sumber_gambar }}
-                                    </small>
-                                </div>
+                                <small class="text-muted">
+                                    Sumber gambar: {{ $article->sumber_gambar }}
+                                </small>
                             @endif
                             <div class="mb-3">
                                 <a href="{{ route('category.index', ['cat' => $article->category->slug]) }}">{{ $article->category->name }}</a>
