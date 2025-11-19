@@ -58,7 +58,7 @@
             <h3 class="m-0">Tags</h3>
         </div>
         <div class="d-flex flex-wrap m-n1">
-            @foreach($article->tags as $tag)
+            @foreach(($article->tags ?? $tags) as $tag)
                 <a href="{{ route('tags.show', $tag->slug) }}" class="btn btn-sm btn-outline-secondary m-1">
                     {{ $tag->name }}
                 </a>
