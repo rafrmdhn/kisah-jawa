@@ -24,7 +24,7 @@ class ContactController extends Controller
             ->whereIn('name', ['Kriminal', 'Misteri', 'Opini', 'Film & Review', 'Sejarah'])
             ->take(5)
             ->get();
-        $tags = Tag::all();
+        $tags = Tag::latest()->take(20)->get();
         return view('contact.index', compact(
             'trendingNews',
             'categories',

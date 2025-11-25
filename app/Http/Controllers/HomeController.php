@@ -35,7 +35,7 @@ class HomeController extends Controller
             return ['name' => $name, 'slug' => $slug, 'img' => $img];
         });
 
-        $tags = Tag::all();
+        $tags = Tag::latest()->take(20)->get();
 
         $topNews = Article::with('category')
             ->whereHas('category', function ($query) {

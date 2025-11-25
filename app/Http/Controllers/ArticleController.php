@@ -49,7 +49,7 @@ class ArticleController extends Controller
             ])
             ->take(5)
             ->get();
-        $tags = Tag::all();
+        $tags = Tag::latest()->take(20)->get();
 
         return view('news.show', compact(
             'article',
@@ -107,7 +107,7 @@ class ArticleController extends Controller
             ->trending(5, 7)
             ->terbit()
             ->get();
-        $tags = Tag::all();
+        $tags = Tag::latest()->take(20)->get();
         return view('news.search', compact(
             'articles',
             'q',

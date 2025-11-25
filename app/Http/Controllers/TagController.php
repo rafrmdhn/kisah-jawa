@@ -14,7 +14,7 @@ class TagController extends Controller
     {
         $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
-        $tags = Tag::all();
+        $tags = Tag::latest()->take(20)->get();
         $articles = Article::with('category','tags')
             ->whereHas('tags', fn($q) => $q->where('tags.id', $tag->id))
             ->terbit()
