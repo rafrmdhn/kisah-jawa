@@ -20,24 +20,29 @@
                 <div class="col-lg-8">
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" src="{{ $article->gambar }}" style="object-fit: cover;">
-                        @if (!empty($article->sumber_gambar))
-                            <div class="mt-1 text-right">
-                                <small class="text-muted">
-                                    Sumber gambar: {{ $article->sumber_gambar }}
-                                </small>
-                            </div>
-                        @endif
                         <div class="overlay position-relative bg-light">
-                            <div class="mb-3">
-                                <a href="{{ route('category.index', ['cat' => $article->category->slug]) }}">{{ $article->category->name }}</a>
-                                <span class="px-1">/</span>
-                                <span>{{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('l, d F Y') }}</span>
+                            <div class="text-center">
+                                <h2 class="mb-2 text-primary">{{ $article->judul }}</h2>
+                                <div class="mb-3 text-center text-muted">
+                                    <small>
+                                        Penulis: {{ $article->nama_penulis }} <br>
+                                        @if(!empty($article->additional_authors->name))
+                                            Editor: {{ $article->additional_authors->name }} <br>
+                                        @endif
+                                        {{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('l, d F Y') }}
+                                    </small>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="mb-3">{{ $article->judul }}</h3>
-                                {!! $article->deskripsi !!}
-                            </div>
+                            <img class="img-fluid w-100" src="{{ $article->gambar }}" style="object-fit: cover;">
+                            @if (!empty($article->sumber_gambar))
+                                <div class="mt-1 mb-4 text-right">
+                                    <small class="text-muted">
+                                        Sumber gambar: {{ $article->sumber_gambar }}
+                                    </small>
+                                </div>
+                            @endif
+
+                            {!! $article->deskripsi !!}
                         </div>
                     </div>
                     <!-- News Detail End -->

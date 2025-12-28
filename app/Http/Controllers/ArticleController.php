@@ -24,7 +24,7 @@ class ArticleController extends Controller
     {
         $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
-        $article = Article::with(['category','tags'])
+        $article = Article::with(['category','tags', 'additional_authors'])
             ->where('slug',$slug)
             ->terbit()
             ->firstOrFail();

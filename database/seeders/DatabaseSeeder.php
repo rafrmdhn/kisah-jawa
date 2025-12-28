@@ -52,7 +52,9 @@ class DatabaseSeeder extends Seeder
         // }
 
         $this->call([
-            AdSeeder::class,
+            // AdSeeder::class,
+            AdditionalAuthorSeeder::class,
+            ArticleAdditionalAuthorSeeder::class,
         ]);
 
         // $this->call(ArtikelTagSeeder::class);
