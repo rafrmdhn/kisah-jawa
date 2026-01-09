@@ -605,10 +605,10 @@ pre code {
   margin-left: auto;
 }
 
-.article-content img{
-  max-width: 100%;
-  height: auto;
+.overlay .article-content img{
   width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 .article-content figure.image.image_resized{
