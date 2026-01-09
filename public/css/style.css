@@ -605,22 +605,6 @@ pre code {
   margin-left: auto;
 }
 
-.overlay .article-content img{
-  width: auto !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
-
-.article-content figure.image.image_resized{
-  max-width: 100%;
-  margin: 12px auto;
-}
-
-.article-content figure.image.image_resized img{
-  width: 100% !important;
-  height: auto !important;
-}
-
 @media (min-width: 576px) {
   .container, .container-sm {
     max-width: 540px;
