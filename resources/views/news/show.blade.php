@@ -42,7 +42,9 @@
                                 </div>
                             @endif
 
-                            {!! $article->deskripsi !!}
+                            <div class="article-content">
+                                {!! $article->deskripsi !!}
+                            </div>
                         </div>
                     </div>
                     <!-- News Detail End -->
