@@ -605,6 +605,28 @@ pre code {
   margin-left: auto;
 }
 
+/* gambar di dalam konten artikel */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CKEditor figure default */
+.article-content figure.image {
+  margin: 0 0 1rem;
+}
+
+/* Ini kuncinya: kalau image_resized, gambar ikut lebar figure */
+.article-content figure.image_resized img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Opsional: biar rapi dan tidak overflow */
+.article-content figure.image_resized {
+  max-width: 100%;
+}
+
 @media (min-width: 576px) {
   .container, .container-sm {
     max-width: 540px;

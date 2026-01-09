@@ -4,20 +4,3 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
-
-.article-content figure.image img{
-  width: auto !important;      /* hormati width="200" */
-  max-width: 100% !important;
-  height: auto !important;
-}
-
-/* Untuk image_resized: yang ngatur ukuran adalah FIGURE (%) */
-.article-content figure.image.image_resized{
-  max-width: 100% !important;
-}
-
-/* Img di dalam image_resized mengikuti lebar figure (49.22%) */
-.article-content figure.image.image_resized img{
-  width: 100% !important;
-  height: auto !important;
-}
