@@ -606,9 +606,33 @@ pre code {
 }
 
 .article-content img{
-  width: auto !important;
-  max-width: 100% !important;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 2) Balikin ukuran img agar tidak di-stretch oleh CSS global */
+.article-content figure.image img{
+  width: auto !important;     /* supaya width="200" tetap dihormati */
+  max-width: 100% !important; /* tetap responsif di layar kecil */
   height: auto !important;
+}
+
+/* 3) Pastikan figure resized dari CKEditor benar-benar dipakai */
+.article-content figure.image.image_resized{
+  display: block;
+  margin: 12px auto;
+  /* kalau theme kamu memaksa figure 100%, override: */
+  width: auto; /* default */
+}
+.article-content figure.image.image_resized[style]{
+  width: inherit; /* biasanya tidak perlu, opsional */
+}
+
+/* Jika theme kamu ternyata punya `figure.image{width:100%!important;}` */
+.article-content figure.image{
+  width: fit-content;
+  max-width: 100%;
+  margin: 12px auto;
 }
 
 @media (min-width: 576px) {
