@@ -26,8 +26,9 @@
                                 <div class="mb-3 text-center text-muted">
                                     <small>
                                         Penulis: {{ $article->nama_penulis }} <br>
-                                        @if(!empty($article->additional_authors->name))
-                                            Editor: {{ $article->additional_authors->name }} <br>
+                                        @if($article->additional_authors->isNotEmpty())
+                                            Editor:
+                                            {{ $article->additional_authors->pluck('name')->join(', ') }} <br>
                                         @endif
                                         {{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('l, d F Y') }}
                                     </small>
