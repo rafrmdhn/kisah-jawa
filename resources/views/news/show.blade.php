@@ -17,6 +17,22 @@
             max-width: 100% !important;
             height: auto !important;
         }
+
+        .article-content figure.media {
+            display: block !important;
+            margin: 16px 0;
+        }
+
+        .article-content figure.media > div,
+        .article-content figure.media iframe {
+            width: 100% !important;
+        }
+
+        .article-content figure.media iframe {
+            aspect-ratio: 16 / 9;
+            height: auto !important;
+            display: block;
+        }
     </style>
     <!-- Breadcrumb Start -->
     <div class="container-fluid">
