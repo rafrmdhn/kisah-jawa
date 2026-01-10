@@ -13,7 +13,7 @@
         }
 
         .article-content figure.image:not(.image_resized) img {
-            width: auto !important;     /* hormati width="200" */
+            width: auto !important;
             max-width: 100% !important;
             height: auto !important;
         }
