@@ -49,7 +49,7 @@ class ArticleController extends Controller
             ])
             ->take(5)
             ->get();
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
 
         return view('news.show', compact(
             'article',
@@ -107,7 +107,7 @@ class ArticleController extends Controller
             ->trending(5, 7)
             ->terbit()
             ->get();
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
         return view('news.search', compact(
             'articles',
             'q',
@@ -140,7 +140,7 @@ class ArticleController extends Controller
             ->whereIn('name', $allowedCategories)
             ->take(5)->get();
 
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
 
         return view('news.popular', compact(
             'articles',
@@ -166,7 +166,7 @@ class ArticleController extends Controller
             ->whereIn('name', $allowedCategories)
             ->take(5)->get();
 
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
 
         return view('news.trending', compact(
             'articles',
@@ -201,7 +201,7 @@ class ArticleController extends Controller
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowed)->take(5)->get();
 
-        $tags = Tag::query()->latest()->take(20)->get();
+        $tags = Tag::query()->latest()->take(10)->get();
 
         return view('news.newest', compact('articles','trendingNews','categories','tags','cat', 'sidebarAd','headerAd'));
     }

@@ -46,7 +46,7 @@ class CategoryController extends Controller
             ->take(5)
             ->get();
 
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
 
         return view('categories.index', compact(
             'categories',
