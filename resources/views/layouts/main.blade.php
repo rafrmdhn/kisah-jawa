@@ -6,7 +6,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Favicon -->
-    {{-- <link href="/img/favicon.ico" rel="icon"> --}}
+    <link type="image/png" href="https://fypmedia.id/assets/backoffice/media/logos/FYPLOGO.png" rel="icon">
+
+    <meta property="og:image" content="{{ asset('img/logo.jpg') }}">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
