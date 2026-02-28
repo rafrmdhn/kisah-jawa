@@ -8,7 +8,7 @@
     <!-- Favicon -->
     <link type="image/png" href="https://fypmedia.id/assets/backoffice/media/logos/FYPLOGO.png" rel="icon">
 
-    <meta property="og:image" content="https://kisahjawa.fypmedia.id/img/logo.jpg">
+    <meta property="og:image" content="https://kisahjawa.fypmedia.id/img/logo.png">
     <meta property="og:title" content="Kisah Jawa">
     <meta property="og:url" content="https://kisahjawa.fypmedia.id/">
     <meta property="og:type" content="website">
