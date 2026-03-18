@@ -16,7 +16,7 @@
         <meta property="og:title" content="Kisah Jawa">
         <meta property="og:url" content="https://kisahjawa.fypmedia.id/">
         <meta property="og:type" content="website">
-    @endhasSection
+    @endif
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
