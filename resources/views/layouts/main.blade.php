@@ -8,6 +8,8 @@
     <!-- Favicon -->
     <link type="image/png" href="https://fypmedia.id/assets/backoffice/media/logos/FYPLOGO.png" rel="icon">
 
+    @yield('meta')
+
     <meta property="og:image" content="https://kisahjawa.fypmedia.id/img/logo.png">
     <meta property="og:description" content="Ekosistem berita dan konten terkurasi yang menghadirkan berbagai cerita dan informasi terkini">
     <meta property="og:title" content="Kisah Jawa">
