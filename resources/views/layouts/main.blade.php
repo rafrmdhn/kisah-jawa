@@ -8,13 +8,15 @@
     <!-- Favicon -->
     <link type="image/png" href="https://fypmedia.id/assets/backoffice/media/logos/FYPLOGO.png" rel="icon">
 
-    @yield('meta')
-
-    <meta property="og:image" content="https://kisahjawa.fypmedia.id/img/logo.png">
-    <meta property="og:description" content="Ekosistem berita dan konten terkurasi yang menghadirkan berbagai cerita dan informasi terkini">
-    <meta property="og:title" content="Kisah Jawa">
-    <meta property="og:url" content="https://kisahjawa.fypmedia.id/">
-    <meta property="og:type" content="website">
+    @hasSection('meta')
+        @yield('meta')
+    @else
+        <meta property="og:image" content="https://kisahjawa.fypmedia.id/img/logo.png">
+        <meta property="og:description" content="Ekosistem berita dan konten terkurasi">
+        <meta property="og:title" content="Kisah Jawa">
+        <meta property="og:url" content="https://kisahjawa.fypmedia.id/">
+        <meta property="og:type" content="website">
+    @endhasSection
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
